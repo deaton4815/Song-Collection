@@ -12,6 +12,8 @@ public:
 
 	int getUserAction() const;
 	std::array<std::string, 3> getSongInformation() const;
+	void displaySongCollectionHeader(bool);
+	void displaySong(const std::string&, const std::string&, const std::string&) const;
 
 private:
 
@@ -23,5 +25,4 @@ private:
 
 	std::string getSongCharacteristic(const std::string&) const;
 	bool isCorrectSongEntry(const std::string&, const std::string&, const std::string&) const;
-	void displaySongInformation(const std::string&, const std::string&, const std::string&) const;
 };

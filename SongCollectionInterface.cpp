@@ -24,6 +24,19 @@ array<string, 3> SongCollectionInterface::getSongInformation() const {
 	}
 }
 
+void SongCollectionInterface::displaySongCollectionHeader(bool isSorted) {
+	if (isSorted) {
+		cout << "\nSong collection sorted alphabetically by artist:";
+	}
+	else {
+		cout << "\nSong collection ordered by user entry:";
+	}
+}
+
+void SongCollectionInterface::displaySong(const string& title, const string& artist, const string& genre) const {
+	cout << "\n" << title << " by " << artist << " (" << genre << ")";
+}
+
 void SongCollectionInterface::displayMenu() const {
 	cout << "\nPlease select from available options?" << endl << endl;
 
@@ -60,7 +73,8 @@ string SongCollectionInterface::getSongCharacteristic(const string& label) const
 }
 
 bool SongCollectionInterface::isCorrectSongEntry(const string& title, const string& artist, const string& genre) const {
-	displaySongInformation(title, artist, genre);
+	cout << "\nSong entered:";
+	displaySong(title, artist, genre);
 
 	bool isCorrect{ false };
 	char yes_no{ '\0' };
@@ -78,9 +92,4 @@ bool SongCollectionInterface::isCorrectSongEntry(const string& title, const stri
 	}
 
 	return isCorrect;
-}
-
-void SongCollectionInterface::displaySongInformation(const string& title, const string& artist, const string& genre) const {
-	cout << "\nSong entered: ";
-	cout << title << " a " << genre << " song by " << artist << endl;
 }
