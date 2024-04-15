@@ -2,6 +2,10 @@
 
 using namespace std;
 
+SongCollection::SongCollection() {
+	executeSongCollection();
+}
+
 void SongCollection::addSong(string title, string artist, string genre) {
 
 	Song newSong(title, artist, genre);

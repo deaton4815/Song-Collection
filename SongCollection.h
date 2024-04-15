@@ -11,10 +11,13 @@ class SongCollection
 
 public:
 
+	SongCollection();
+
 private:
 
 	std::vector<Song> m_collection;
 
+	void executeSongCollection();
 	void addSong(std::string, std::string, std::string);
 	void sortCollection();
 };
