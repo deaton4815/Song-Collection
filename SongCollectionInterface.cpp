@@ -40,7 +40,7 @@ void SongCollectionInterface::displaySong(const string& title, const string& art
 }
 
 void SongCollectionInterface::displayMenu() const {
-	cout << "\nPlease select from available options:" << endl << endl;
+	cout << "\n\nPlease select from available options:" << endl << endl;
 
 	cout << "1 - Add new song to collection" << endl;
 	cout << "2 - Display song collection as entered" << endl;
@@ -72,7 +72,7 @@ bool SongCollectionInterface::isLegalMenuSelection(int selection) const {
 
 string SongCollectionInterface::getSongCharacteristic(const string& label) const {
 	string characteristic{ "" };
-	cout << "\nPlease enter song " << label << ": ";
+	cout << "Please enter song " << label << ": ";
 	getline(cin, characteristic);
 	return characteristic;
 }

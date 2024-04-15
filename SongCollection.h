@@ -25,5 +25,6 @@ private:
 	void addSong(std::array<std::string, 3>);
 	void displayCollection(bool) const;
 	void sortCollection();
+	bool isEmptyCollection();
 };
 

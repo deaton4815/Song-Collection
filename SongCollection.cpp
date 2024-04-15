@@ -17,16 +17,20 @@ void SongCollection::executeSongCollection() {
 			addSong(m_userInterface.getSongInformation());
 			break;
 		case 2:
-			isSorted = false;
-			m_userInterface.displaySongCollectionHeader(isSorted);
-			displayCollection(isSorted);
+			if (!isEmptyCollection()) {
+				isSorted = false;
+				m_userInterface.displaySongCollectionHeader(isSorted);
+				displayCollection(isSorted);
+			}
 			break;
 		case 3:
-			sortCollection();
-			isSorted = true;
-			m_userInterface.displaySongCollectionHeader(isSorted);
-			displayCollection(isSorted);
-			break;
+			if (!isEmptyCollection()) {
+				sortCollection();
+				isSorted = true;
+				m_userInterface.displaySongCollectionHeader(isSorted);
+				displayCollection(isSorted);
+				break;
+			}
 		case 0:
 		default:
 			break;
@@ -37,7 +41,7 @@ void SongCollection::executeSongCollection() {
 void SongCollection::addSong(array<string, 3> song) {
 	string title{ song.at(0) };
 	string artist{ song.at(1) };
-	string genre{ song.at(3) };
+	string genre{ song.at(2) };
 	Song newSong(title, artist, genre);
 	m_collection.push_back(newSong);
 }
@@ -62,16 +66,19 @@ void SongCollection::displayCollection(bool isSorted) const {
 		artist = song->getArtist();
 		genre = song->getGenre();
 		m_userInterface.displaySong(title, artist, genre);
+		++song;
 	}
 }
 
-/*
 void SongCollection::sortCollection() {
 	m_sortedCollection = m_collection;
 	sort(m_sortedCollection.begin(), m_sortedCollection.end());
 }
-*/
 
-void SongCollection::sortCollection() {
-	m_sortedCollection = m_collection;
+bool SongCollection::isEmptyCollection() {
+	bool isEmpty{ true };
+	if (!m_collection.empty()) {
+		isEmpty = false;
+	}
+	return isEmpty;
 }
