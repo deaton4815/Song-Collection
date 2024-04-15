@@ -65,7 +65,13 @@ void SongCollection::displayCollection(bool isSorted) const {
 	}
 }
 
+/*
 void SongCollection::sortCollection() {
 	m_sortedCollection = m_collection;
 	sort(m_sortedCollection.begin(), m_sortedCollection.end());
+}
+*/
+
+void SongCollection::sortCollection() {
+	m_sortedCollection = m_collection;
 }
