@@ -9,6 +9,7 @@ public:
 
 	Song(std::string, std::string, std::string);
 
+	bool operator< (const Song&) const;
 
 private:
 
