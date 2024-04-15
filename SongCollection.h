@@ -13,7 +13,7 @@ public:
 
 private:
 
-	std::vector<Song> m_songCollection;
+	std::vector<Song> m_collection;
 
 	void addSong(std::string, std::string, std::string);
 	void sortCollection();
