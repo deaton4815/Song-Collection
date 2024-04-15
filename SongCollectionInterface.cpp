@@ -83,13 +83,8 @@ bool SongCollectionInterface::isCorrectSongEntry(const string& title, const stri
 		cin >> yes_no;
 	}
 	
-	switch (yes_no) {
-	case 'y':
+	if ('y' == yes_no) {
 		isCorrect = true;
-	case 'n':
-	default:
-		isCorrect = false; 
 	}
-
 	return isCorrect;
 }
