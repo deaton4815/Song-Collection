@@ -3,7 +3,6 @@
 #include <iostream>
 #include <array>
 #include <string>
-#include <algorithm>
 
 class SongCollectionInterface
 {
@@ -17,7 +16,7 @@ public:
 
 private:
 
-	std::array<int, 4> m_legalMenuSelections{ 0, 1, 2, 3 };
+	const std::array<int, 4> m_legalMenuSelections{ 0, 1, 2, 3 };
 
 	void displayMenu() const;
 	int getMenuSelection() const;

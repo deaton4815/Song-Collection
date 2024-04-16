@@ -2,13 +2,83 @@
 
 using namespace std;
 
-void SongCollection::addSong(string title, string artist, string genre) {
+SongCollection::SongCollection() {
+	executeSongCollection();
+}
 
+bool isSorted{ false };
+void SongCollection::executeSongCollection() {
+	int action{ -1 };
+	while (action != 0) {
+		action = m_userInterface.getUserAction();
+
+		switch (action) {
+		case 1:
+			addSong(m_userInterface.getSongInformation());
+			break;
+		case 2:
+			if (!isEmptyCollection()) {
+				isSorted = false;
+				m_userInterface.displaySongCollectionHeader(isSorted);
+				displayCollection(isSorted);
+			}
+			break;
+		case 3:
+			if (!isEmptyCollection()) {
+				sortCollection();
+				isSorted = true;
+				m_userInterface.displaySongCollectionHeader(isSorted);
+				displayCollection(isSorted);
+				break;
+			}
+		case 0:
+		default:
+			break;
+		}
+	}
+}
+
+void SongCollection::addSong(array<string, 3> song) {
+	string title{ song.at(0) };
+	string artist{ song.at(1) };
+	string genre{ song.at(2) };
 	Song newSong(title, artist, genre);
 	m_collection.push_back(newSong);
+}
 
+void SongCollection::displayCollection(bool isSorted) const {
+	vector<Song> collection;
+	if (isSorted) {
+		 collection = m_sortedCollection;
+	}
+	else {
+		 collection = m_collection;
+	}
+	
+	auto song{ collection.begin() };
+
+	string title{ "" };
+	string artist{ "" };
+	string genre{ "" };
+
+	for (size_t i{ 0 }; i < collection.size(); i++) {
+		title = song->getTitle();
+		artist = song->getArtist();
+		genre = song->getGenre();
+		m_userInterface.displaySong(title, artist, genre);
+		++song;
+	}
 }
 
 void SongCollection::sortCollection() {
-	sort(m_collection.begin(), m_collection.end());
+	m_sortedCollection = m_collection;
+	sort(m_sortedCollection.begin(), m_sortedCollection.end());
+}
+
+bool SongCollection::isEmptyCollection() {
+	bool isEmpty{ true };
+	if (!m_collection.empty()) {
+		isEmpty = false;
+	}
+	return isEmpty;
 }

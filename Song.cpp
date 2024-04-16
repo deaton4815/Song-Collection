@@ -2,11 +2,14 @@
 
 using namespace std;
 
+Song::Song() = default;
 Song::Song(string title, string artist, string genre)
 	: m_title(title)
 	, m_artist(artist)
 	, m_genre(genre)
 {}
+
+Song::Song(const Song& song) = default;
 
 bool Song::operator< (const Song& song2) const {
 	bool less_than{ false };
@@ -18,3 +21,7 @@ bool Song::operator< (const Song& song2) const {
 	}
 	return less_than;
 }
+
+string Song::getTitle() const { return m_title; };
+string Song::getArtist() const { return m_artist; };
+string Song::getGenre() const { return m_genre; };
