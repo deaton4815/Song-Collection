@@ -7,7 +7,15 @@ class Song
 
 public:
 
+	Song();
 	Song(std::string, std::string, std::string);
+	Song(const Song&);
+
+	bool operator< (const Song&) const;
+
+	std::string getTitle() const;
+	std::string getArtist() const;
+	std::string getGenre() const;
 
 private:
 
