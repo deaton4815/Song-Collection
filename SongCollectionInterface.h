@@ -1,3 +1,10 @@
+/*
+* Philip Deaton
+*
+* 605.604 - 04/24
+*
+* Class handles user interface of song collection
+*/
 #pragma once
 
 #include <iostream>
@@ -16,7 +23,7 @@ public:
 
 private:
 
-	const std::array<int, 4> m_legalMenuSelections{ 0, 1, 2, 3 };
+	const std::array<int, 4> m_legalMenuSelections{ 0, 1, 2, 3 };//Possible main menu selections
 
 	void displayMenu() const;
 	int getMenuSelection() const;

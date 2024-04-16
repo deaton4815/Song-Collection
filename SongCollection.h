@@ -1,3 +1,10 @@
+/*
+* Philip Deaton
+*
+* 605.604 - 04/24
+*
+* Class stores and acts upon a collection of songs
+*/
 #pragma once
 
 #include <vector>

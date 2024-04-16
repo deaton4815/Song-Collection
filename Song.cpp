@@ -11,6 +11,8 @@ Song::Song(string title, string artist, string genre)
 
 Song::Song(const Song& song) = default;
 
+// Songs compared by artist name first
+// Compared by song name if two songs are by the same artist
 bool Song::operator< (const Song& song2) const {
 	bool less_than{ false };
 	if (song2.m_artist != this->m_artist) {

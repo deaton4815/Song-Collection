@@ -2,11 +2,13 @@
 
 using namespace std;
 
+//Display main menu and get selection
 int SongCollectionInterface::getUserAction() const {
 	displayMenu();
 	return getMenuSelection();
 }
 
+//Get title, artist, and genre of song
 array<string, 3> SongCollectionInterface::getSongInformation() const {
 	cout << endl;
 
@@ -14,8 +16,9 @@ array<string, 3> SongCollectionInterface::getSongInformation() const {
 	string artist{ "" };
 	string genre{ "" };
 
+	// Get song information and give user opportunity to correct potential typos
 	bool isCorrect{ false };
-	while (!isCorrect) {
+	while (!isCorrect) { 
 		cin.ignore(1024, '\n');
 		title = getSongCharacteristic("title");
 		artist = getSongCharacteristic("artist");
@@ -26,6 +29,7 @@ array<string, 3> SongCollectionInterface::getSongInformation() const {
 	return song;
 }
 
+//Headers when displaying song collection
 void SongCollectionInterface::displaySongCollectionHeader(bool isSorted) {
 	if (isSorted) {
 		cout << "\nSong collection sorted alphabetically by artist:";
@@ -35,10 +39,12 @@ void SongCollectionInterface::displaySongCollectionHeader(bool isSorted) {
 	}
 }
 
+// Display song information in following format: Title by Artist (Genre)
 void SongCollectionInterface::displaySong(const string& title, const string& artist, const string& genre) const {
 	cout << "\n" << title << " by " << artist << " (" << genre << ")";
 }
 
+// User main menu options
 void SongCollectionInterface::displayMenu() const {
 	cout << "\n\nPlease select from available options:" << endl << endl;
 
@@ -50,6 +56,7 @@ void SongCollectionInterface::displayMenu() const {
 	cout << "\n0 - Terminate program" << endl;
 }
 
+// User main menu selection
 int SongCollectionInterface::getMenuSelection() const {
 	int selection{ -1 };
 	while (!isLegalMenuSelection(selection)) {
@@ -59,6 +66,7 @@ int SongCollectionInterface::getMenuSelection() const {
 	return selection;
 }
 
+// Check that valid main menu selection was entered
 bool SongCollectionInterface::isLegalMenuSelection(int selection) const {
 	bool isLegal{ false };
 
@@ -70,6 +78,7 @@ bool SongCollectionInterface::isLegalMenuSelection(int selection) const {
 	return isLegal;
 }
 
+// Get user entry for song attribute
 string SongCollectionInterface::getSongCharacteristic(const string& label) const {
 	string characteristic{ "" };
 	cout << "Please enter song " << label << ": ";
@@ -77,6 +86,7 @@ string SongCollectionInterface::getSongCharacteristic(const string& label) const
 	return characteristic;
 }
 
+// Allow user to double-check song entry
 bool SongCollectionInterface::isCorrectSongEntry(const string& title, const string& artist, const string& genre) const {
 	cout << "\nSong entered:";
 	displaySong(title, artist, genre);

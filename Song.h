@@ -1,3 +1,11 @@
+/*
+* Philip Deaton
+*
+* 605.604 - 04/24
+*
+* Class stores information for singular song
+*/
+
 #pragma once
 
 #include <string>

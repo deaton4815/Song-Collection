@@ -6,24 +6,24 @@ SongCollection::SongCollection() {
 	executeSongCollection();
 }
 
-bool isSorted{ false };
 void SongCollection::executeSongCollection() {
+	bool isSorted{ false };
 	int action{ -1 };
 	while (action != 0) {
-		action = m_userInterface.getUserAction();
+		action = m_userInterface.getUserAction(); //User main menu selection
 
 		switch (action) {
-		case 1:
+		case 1: // Add song
 			addSong(m_userInterface.getSongInformation());
 			break;
-		case 2:
+		case 2: // Display non-sorted collection
 			if (!isEmptyCollection()) {
 				isSorted = false;
 				m_userInterface.displaySongCollectionHeader(isSorted);
 				displayCollection(isSorted);
 			}
 			break;
-		case 3:
+		case 3: // Display sorted song collection
 			if (!isEmptyCollection()) {
 				sortCollection();
 				isSorted = true;
@@ -31,13 +31,14 @@ void SongCollection::executeSongCollection() {
 				displayCollection(isSorted);
 				break;
 			}
-		case 0:
+		case 0: // terminate
 		default:
 			break;
 		}
 	}
 }
 
+// Add song to collection
 void SongCollection::addSong(array<string, 3> song) {
 	string title{ song.at(0) };
 	string artist{ song.at(1) };
@@ -49,10 +50,10 @@ void SongCollection::addSong(array<string, 3> song) {
 void SongCollection::displayCollection(bool isSorted) const {
 	vector<Song> collection;
 	if (isSorted) {
-		 collection = m_sortedCollection;
+		 collection = m_sortedCollection; // Display alphabetically sorted collection
 	}
 	else {
-		 collection = m_collection;
+		 collection = m_collection; // Display collection
 	}
 	
 	auto song{ collection.begin() };
